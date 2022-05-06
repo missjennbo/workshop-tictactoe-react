@@ -1,5 +1,5 @@
 {
-    "name": "react-starter",
+    "name": "workshop-tictactoe-react",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -10,9 +10,11 @@
         "@types/node": "^16.11.27",
         "@types/react": "^18.0.6",
         "@types/react-dom": "^18.0.2",
+        "ramda": "^0.28.0",
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-scripts": "5.0.1",
+        "sass": "^1.51.0",
         "typescript": "^4.6.3",
         "web-vitals": "^2.1.4"
     },
@@ -46,6 +48,7 @@
         ]
     },
     "devDependencies": {
+        "@types/ramda": "^0.28.11",
         "@typescript-eslint/eslint-plugin": "^5.20.0",
         "@typescript-eslint/parser": "^5.20.0",
         "eslint": "^8.13.0",

@@ -26,7 +26,6 @@
         "react/jsx-uses-react": 1,
         "react/jsx-uses-vars": 1,
         "react/jsx-no-duplicate-props": 0,
-        "no-unused-vars": "error",
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/no-use-before-define": ["error", {"functions": false, "variables": false}],
         "@typescript-eslint/explicit-member-accessibility": "error",
