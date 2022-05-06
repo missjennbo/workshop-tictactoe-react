@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/workshop-tictactoe-react/static/css/main.1f0951bb.css",
-    "main.js": "/workshop-tictactoe-react/static/js/main.2b0de777.js",
-    "static/media/heart.svg": "/workshop-tictactoe-react/static/media/heart.c31d61db7c2d096bd3219a00053eca01.svg",
-    "static/media/cross.svg": "/workshop-tictactoe-react/static/media/cross.7c1a7ad3606b76d702f02024b1923f04.svg",
-    "index.html": "/workshop-tictactoe-react/index.html",
-    "main.1f0951bb.css.map": "/workshop-tictactoe-react/static/css/main.1f0951bb.css.map",
-    "main.2b0de777.js.map": "/workshop-tictactoe-react/static/js/main.2b0de777.js.map"
+    "main.css": "/static/css/main.1f0951bb.css",
+    "main.js": "/static/js/main.05b445a2.js",
+    "static/media/heart.svg": "/static/media/heart.c31d61db7c2d096bd3219a00053eca01.svg",
+    "static/media/cross.svg": "/static/media/cross.7c1a7ad3606b76d702f02024b1923f04.svg",
+    "index.html": "/index.html",
+    "main.1f0951bb.css.map": "/static/css/main.1f0951bb.css.map",
+    "main.05b445a2.js.map": "/static/js/main.05b445a2.js.map"
   },
   "entrypoints": [
     "static/css/main.1f0951bb.css",
-    "static/js/main.2b0de777.js"
+    "static/js/main.05b445a2.js"
   ]
 }
