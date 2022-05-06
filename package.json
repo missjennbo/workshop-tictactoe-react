@@ -2,6 +2,7 @@
     "name": "workshop-tictactoe-react",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://missjennbo.github.io/workshop-tictactoe-react",
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.4",
         "@testing-library/react": "^13.1.1",
@@ -27,7 +28,9 @@
         "pretty-quick-staged": "pretty-quick --staged",
         "tsc": "node_modules/.bin/tsc",
         "lint": "node_modules/.bin/eslint ./ --ext .js,.jsx,.ts,.tsx",
-        "check": "npm-run-all pretty-quick-staged tsc lint"
+        "check": "npm-run-all pretty-quick-staged tsc lint",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -b gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
@@ -53,6 +56,7 @@
         "@typescript-eslint/parser": "^5.20.0",
         "eslint": "^8.13.0",
         "eslint-plugin-react": "^7.29.4",
+        "gh-pages": "^3.2.3",
         "npm-run-all": "^4.1.5",
         "prettier": "^2.6.2",
         "pretty-quick": "^3.1.3"
