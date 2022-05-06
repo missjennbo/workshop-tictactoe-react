@@ -30,5 +30,6 @@ How to add new tag using git CLI
 
 **Existing tags**
 
--   v1.0 - initial app
--   ...
+- v1.0 - Initial app
+- v2.0 - Exercises solutions
+- v3.0 - Deployed with Github Actions
