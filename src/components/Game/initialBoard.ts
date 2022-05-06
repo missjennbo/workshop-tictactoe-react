@@ -1,6 +1,6 @@
 import {Board, Player} from '../types';
 
-export const initialGame: Board = [
+export const getInitialBoard = (): Board => [
     [
         {filledWith: Player.none, row: 0, column: 0},
         {filledWith: Player.none, row: 0, column: 1},

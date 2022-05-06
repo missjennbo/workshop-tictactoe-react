@@ -64,3 +64,5 @@ export const getNextBoard = (board: Board, cell: Cell, gameFinished: boolean, cu
     }
     return board;
 };
+
+export const displayWinner = (player: Player): string => (player == Player.cross ? 'Herz' : 'Kreuz');
