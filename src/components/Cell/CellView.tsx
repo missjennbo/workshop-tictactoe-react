@@ -9,6 +9,7 @@ interface Props {
 
 const CellView = (props: Props): JSX.Element => {
     const cellIsUnmarked = props.cell.filledWith === Player.none;
+    const cellId = `cell-${props.cell.row}-${props.cell.column}`;
 
     const getMarker = (filledWith: Player): JSX.Element => {
         if (filledWith === Player.heart) {
@@ -21,7 +22,9 @@ const CellView = (props: Props): JSX.Element => {
     };
 
     return (
-        <div onClick={() => (cellIsUnmarked ? props.onClick(props.cell) : '')}>{getMarker(props.cell.filledWith)}</div>
+        <div data-testid={cellId} onClick={() => (cellIsUnmarked ? props.onClick(props.cell) : '')}>
+            {getMarker(props.cell.filledWith)}
+        </div>
     );
 };
 

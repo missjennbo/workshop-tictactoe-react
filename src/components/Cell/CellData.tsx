@@ -5,13 +5,13 @@ import crossImage from '../../images/cross.svg';
 
 export const heartCell = (
     <div className={styles['image-border']}>
-        <img className={styles['image']} src={heartImage} alt="https://www.freepik.com" />
+        <img className={styles['image']} src={heartImage} alt="heart" />
     </div>
 );
 
 export const crossCell = (
     <div className={styles['image-border']}>
-        <img className={styles['image']} src={crossImage} alt="https://www.freepik.com" />
+        <img className={styles['image']} src={crossImage} alt="cross" />
     </div>
 );
 
