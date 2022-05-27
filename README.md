@@ -11,10 +11,10 @@ Common [**React Hooks**](https://reactjs.org/docs/hooks-intro.html)
 How to publish static app using **Github Pages**:
 
 -   Install github pages as dev dependency `npm install gh-pages --save-dev`
--   Add homepage property to `package.json` on top level like `http://{username}.github.io/{repo-name}`
+-   Add homepage property to `package.json` on top level like `https://{username}.github.io/{repo-name}`
 -   Add new scripts to `package.json`
     -   `"predeploy": "npm run build"`
-    -   `"deploy": "gh-pages -d build"`
+    -   `"deploy": "gh-pages -b github-pages -d build"`
 -   Run `npm run deploy` to deploy your application on Github Pages
 
 Introduction to [**Github Actions**](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
