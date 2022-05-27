@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import BoardView from '../Board/BoardView';
 import {getInitialBoard} from './initialBoard';
-import {displayWinner, getNextBoard, getNextPlayer, isGameFinished} from '../../logic/game';
+import {getNextBoard, getNextPlayer, isGameFinished} from '../../logic/game';
 import styles from './GameView.module.scss';
 import {Cell, Player} from '../types';
 
@@ -23,6 +23,8 @@ const GameView = (): JSX.Element => {
         setBoard(getInitialBoard());
         setGameFinished(false);
     };
+
+    const displayWinner = (player: Player): string => (player == Player.cross ? 'Herz' : 'Kreuz');
 
     return (
         <div className={styles['container']}>
