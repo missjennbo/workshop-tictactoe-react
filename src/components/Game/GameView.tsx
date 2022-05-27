@@ -4,6 +4,7 @@ import {getInitialBoard} from './initialBoard';
 import {getNextBoard, getNextPlayer, isGameFinished} from '../../logic/game';
 import styles from './GameView.module.scss';
 import {Cell, Player} from '../types';
+import {equals} from 'ramda';
 
 const GameView = (): JSX.Element => {
     const [board, setBoard] = useState(getInitialBoard());
@@ -24,6 +25,8 @@ const GameView = (): JSX.Element => {
         setGameFinished(false);
     };
 
+    const isDisabled = equals(board, getInitialBoard()) || gameFinished;
+
     const displayWinner = (player: Player): string => (player == Player.cross ? 'Herz' : 'Kreuz');
 
     return (
@@ -31,7 +34,7 @@ const GameView = (): JSX.Element => {
             <p>Tic Tac Toe</p>
             <BoardView boardData={board} onClick={onCellClick} />
             {gameFinished && <p>{displayWinner(currentPlayer)} hat gewonnen!</p>}
-            <button className={styles['reset-button']} onClick={resetGame}>
+            <button disabled={isDisabled} className={styles['reset-button']} onClick={resetGame}>
                 Reset
             </button>
         </div>

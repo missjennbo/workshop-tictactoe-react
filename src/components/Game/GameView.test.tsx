@@ -18,8 +18,25 @@ describe('GameView', () => {
         expect(within(firstCell).getByRole('img')).not.toBeNull();
         expect(within(firstCell).getByAltText('heart')).not.toBeNull();
     });
+    it('should disable reset button if board is empty', () => {
+        const component = render(<GameView />);
+        const resetButton = component.queryByRole('button', {name: 'Reset'});
+        expect(resetButton).not.toBeNull();
+        expect(resetButton).toBeDisabled();
+    });
+    it('should disable reset button if game is finished', () => {
+        const component = render(<GameView />);
+        finishGame(component);
+        const resetButton = component.queryByRole('button', {name: 'Reset'});
+        expect(resetButton).not.toBeNull();
+        expect(resetButton).toBeDisabled();
+    });
     it('should reset board on reset button click', () => {
-        // TODO
+        const component = render(<GameView />);
+        clickCell(component, 0, 0);
+        expect(getImageOfCell(component, 0, 0)).not.toBeNull();
+        fireEvent.click(component.getByRole('button', {name: 'Reset'}));
+        expect(getImageOfCell(component, 0, 0)).toBeNull();
     });
     it('should display winner if game is finished', () => {
         const component = render(<GameView />);
@@ -46,4 +63,7 @@ describe('GameView', () => {
     const clickCell = (component: RenderResult, row: number, column: number): void => {
         fireEvent.click(component.getByTestId(`cell-${row}-${column}`));
     };
+
+    const getImageOfCell = (component: RenderResult, row: number, column: number): HTMLElement | null =>
+        within(component.getByTestId(`cell-${row}-${column}`)).queryByRole('img');
 });
