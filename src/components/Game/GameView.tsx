@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import BoardView from '../Board/BoardView';
 import {getInitialBoard} from './initialBoard';
-import {displayWinner, getNextBoard, getNextPlayer, isGameFinished} from '../../logic/game';
+import {getNextBoard, getNextPlayer, isGameFinished} from '../../logic/game';
 import styles from './GameView.module.scss';
 import {Cell, Player} from '../types';
 
@@ -15,8 +15,11 @@ const GameView = (): JSX.Element => {
             return;
         }
         setBoard(getNextBoard(board, cell, gameFinished, currentPlayer));
-        setGameFinished(isGameFinished(board, currentPlayer));
-        setCurrentPlayer(getNextPlayer(currentPlayer));
+        const isFinished = isGameFinished(board, currentPlayer);
+        setGameFinished(isFinished);
+        if (!isFinished) {
+            setCurrentPlayer(getNextPlayer(currentPlayer));
+        }
     };
 
     const resetGame = (): void => {
@@ -24,11 +27,14 @@ const GameView = (): JSX.Element => {
         setGameFinished(false);
     };
 
+    const currentPlayerDisplayName = currentPlayer === Player.heart ? 'Herz' : 'Kreuz';
+
     return (
         <div className={styles['container']}>
             <p>Tic Tac Toe</p>
             <BoardView boardData={board} onClick={onCellClick} />
-            {gameFinished && <p>{displayWinner(currentPlayer)} hat gewonnen!</p>}
+            {gameFinished && <p>{currentPlayerDisplayName} hat gewonnen!</p>}
+            {!gameFinished && <p>{currentPlayerDisplayName} ist dran!</p>}
             <button className={styles['reset-button']} onClick={resetGame}>
                 Reset
             </button>
