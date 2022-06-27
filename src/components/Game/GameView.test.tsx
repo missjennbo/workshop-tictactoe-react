@@ -18,6 +18,12 @@ describe('GameView', () => {
         expect(within(firstCell).getByRole('img')).not.toBeNull();
         expect(within(firstCell).getByAltText('heart')).not.toBeNull();
     });
+    it('should disable reset button if board is empty', () => {
+        // TODO
+    });
+    it('should disable reset button if game is finished', () => {
+        // TODO
+    });
     it('should reset board on reset button click', () => {
         const component = render(<GameView />);
         clickCell(component, 0, 0);
