@@ -17,10 +17,8 @@ export const getNextBoard = (board: Board, cell: Cell, gameFinished: boolean, cu
     return board;
 };
 
-const getMarkerFor = (currentPlayer: Player): Player => (currentPlayer === Player.cross ? Player.cross : Player.heart);
-
 export const isGameFinished = (boardData: Board, currentPlayer: Player): boolean => {
-    const markerForCurrentPlayer = getMarkerFor(currentPlayer);
+    const markerForCurrentPlayer = currentPlayer === Player.cross ? Player.cross : Player.heart;
     return (
         hasThreeInRow(boardData, markerForCurrentPlayer) ||
         hasThreeInColumn(boardData, markerForCurrentPlayer) ||
