@@ -19,7 +19,11 @@ describe('GameView', () => {
         expect(within(firstCell).getByAltText('heart')).not.toBeNull();
     });
     it('should reset board on reset button click', () => {
-        // TODO
+        const component = render(<GameView />);
+        clickCell(component, 0, 0);
+        expect(getImageOfCell(component, 0, 0)).not.toBeNull();
+        fireEvent.click(component.getByRole('button', {name: 'Reset'}));
+        expect(getImageOfCell(component, 0, 0)).toBeNull();
     });
     it('should display winner if game is finished', () => {
         const component = render(<GameView />);
@@ -46,4 +50,7 @@ describe('GameView', () => {
     const clickCell = (component: RenderResult, row: number, column: number): void => {
         fireEvent.click(component.getByTestId(`cell-${row}-${column}`));
     };
+
+    const getImageOfCell = (component: RenderResult, row: number, column: number): HTMLElement | null =>
+        within(component.getByTestId(`cell-${row}-${column}`)).queryByRole('img');
 });
