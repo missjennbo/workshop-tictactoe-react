@@ -3,17 +3,14 @@ import {all, equals} from 'ramda';
 
 const isUnmarked = (cell: Cell): boolean => cell.filledWith === Player.none;
 
-const getMarkerFor = (currentPlayer: Player): Player => (currentPlayer === Player.cross ? Player.cross : Player.heart);
-
 export const getNextPlayer = (currentPlayer: Player): Player =>
     currentPlayer === Player.heart ? Player.cross : Player.heart;
 
 export const isGameFinished = (boardData: Board, currentPlayer: Player): boolean => {
-    const markerForCurrentPlayer = getMarkerFor(currentPlayer);
     return (
-        hasThreeInRow(boardData, markerForCurrentPlayer) ||
-        hasThreeInColumn(boardData, markerForCurrentPlayer) ||
-        hasThreeDiagonal(boardData, markerForCurrentPlayer)
+        hasThreeInRow(boardData, currentPlayer) ||
+        hasThreeInColumn(boardData, currentPlayer) ||
+        hasThreeDiagonal(boardData, currentPlayer)
     );
 };
 
