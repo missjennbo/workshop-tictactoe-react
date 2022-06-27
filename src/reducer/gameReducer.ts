@@ -28,15 +28,18 @@ const updateGame = (currentState: GameState, action: GameAction): GameState => {
     if (action.clickedCell == undefined) {
         return currentState;
     }
+    const board = getNextBoard(
+        currentState.board,
+        action.clickedCell,
+        currentState.gameFinished,
+        currentState.currentPlayer
+    );
+    const gameFinished = isGameFinished(currentState.board, currentState.currentPlayer);
+    const currentPlayer = gameFinished ? currentState.currentPlayer : getNextPlayer(currentState.currentPlayer);
     return {
-        board: getNextBoard(
-            currentState.board,
-            action.clickedCell,
-            currentState.gameFinished,
-            currentState.currentPlayer
-        ),
-        gameFinished: isGameFinished(currentState.board, currentState.currentPlayer),
-        currentPlayer: getNextPlayer(currentState.currentPlayer),
+        board,
+        gameFinished,
+        currentPlayer,
     };
 };
 
