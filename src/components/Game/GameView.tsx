@@ -4,6 +4,7 @@ import {getInitialBoard} from './initialBoard';
 import {getNextBoard, getNextPlayer, isGameFinished} from '../../logic/game';
 import styles from './GameView.module.scss';
 import {Cell, Player} from '../types';
+import {equals} from 'ramda';
 
 const GameView = (): JSX.Element => {
     const [board, setBoard] = useState(getInitialBoard());
