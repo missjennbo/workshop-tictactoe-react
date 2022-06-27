@@ -1,10 +1,18 @@
 import {Board, Cell, Player} from '../components/types';
 import {hasThreeDiagonal, hasThreeInColumn, hasThreeInRow} from './board';
 
+const isUnmarked = (cell: Cell): boolean => cell.filledWith === Player.none;
+
 export const getNextPlayer = (currentPlayer: Player): Player =>
     currentPlayer === Player.heart ? Player.cross : Player.heart;
 
-const isUnmarked = (cell: Cell): boolean => cell.filledWith === Player.none;
+export const isGameFinished = (boardData: Board, currentPlayer: Player): boolean => {
+    return (
+        hasThreeInRow(boardData, currentPlayer) ||
+        hasThreeInColumn(boardData, currentPlayer) ||
+        hasThreeDiagonal(boardData, currentPlayer)
+    );
+};
 
 export const getNextBoard = (board: Board, cell: Cell, gameFinished: boolean, currentPlayer: Player): Board => {
     if (gameFinished) {
@@ -15,13 +23,4 @@ export const getNextBoard = (board: Board, cell: Cell, gameFinished: boolean, cu
         board[cell.row][cell.column].filledWith = currentPlayer;
     }
     return board;
-};
-
-export const isGameFinished = (boardData: Board, currentPlayer: Player): boolean => {
-    const markerForCurrentPlayer = currentPlayer === Player.cross ? Player.cross : Player.heart;
-    return (
-        hasThreeInRow(boardData, markerForCurrentPlayer) ||
-        hasThreeInColumn(boardData, markerForCurrentPlayer) ||
-        hasThreeDiagonal(boardData, markerForCurrentPlayer)
-    );
 };
