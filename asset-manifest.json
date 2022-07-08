@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/workshop-tictactoe-react/static/css/main.c92ac372.css",
-    "main.js": "/workshop-tictactoe-react/static/js/main.33053ce9.js",
+    "main.js": "/workshop-tictactoe-react/static/js/main.f5b12002.js",
     "static/media/heart.svg": "/workshop-tictactoe-react/static/media/heart.c31d61db7c2d096bd3219a00053eca01.svg",
     "static/media/cross.svg": "/workshop-tictactoe-react/static/media/cross.7c1a7ad3606b76d702f02024b1923f04.svg",
     "index.html": "/workshop-tictactoe-react/index.html",
     "main.c92ac372.css.map": "/workshop-tictactoe-react/static/css/main.c92ac372.css.map",
-    "main.33053ce9.js.map": "/workshop-tictactoe-react/static/js/main.33053ce9.js.map"
+    "main.f5b12002.js.map": "/workshop-tictactoe-react/static/js/main.f5b12002.js.map"
   },
   "entrypoints": [
     "static/css/main.c92ac372.css",
-    "static/js/main.33053ce9.js"
+    "static/js/main.f5b12002.js"
   ]
 }
