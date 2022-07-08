@@ -55,8 +55,7 @@ export const getNextBoard = (board: Board, cell: Cell, gameFinished: boolean, cu
     if (gameFinished) {
         return board;
     }
-    const clickedCell = board[cell.row][cell.column];
-    if (isUnmarked(clickedCell)) {
+    if (isUnmarked(cell)) {
         board[cell.row][cell.column].filledWith = currentPlayer;
     }
     return board;

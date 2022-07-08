@@ -3,8 +3,8 @@ import BoardView from '../Board/BoardView';
 import styles from './GameView.module.scss';
 import {Cell, Player} from '../types';
 import {useDispatch, useSelector} from 'react-redux';
-import {CELL_CLICKED, RESET_GAME} from '../../actions/gameActions';
 import {GameAction} from '../../reducer/gameReducer';
+import {CELL_CLICKED, RESET_GAME} from '../../actions/gameActions';
 import {RootState} from '../../store';
 
 const GameView = (): JSX.Element => {
@@ -20,11 +20,11 @@ const GameView = (): JSX.Element => {
 
     return (
         <div className={styles['container']}>
-            <p>Tic Tac Toe</p>
+            <h1>Tic Tac Toe</h1>
             <BoardView boardData={board} onClick={onCellClick} />
             {gameFinished && <p>{currentPlayerDisplayName} hat gewonnen!</p>}
             {!gameFinished && <p>{currentPlayerDisplayName} ist dran!</p>}
-            <button className={styles['reset-button']} onClick={resetGame}>
+            <button className={styles.resetBtn} onClick={resetGame}>
                 Reset
             </button>
         </div>
