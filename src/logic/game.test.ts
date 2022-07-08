@@ -3,11 +3,7 @@ import {Board, Player} from '../components/types';
 import {hasThreeDiagonal, hasThreeInColumn, hasThreeInRow} from './board';
 import {getInitialBoard} from '../components/Game/initialBoard';
 
-jest.mock('./board', () => ({
-    hasThreeInRow: jest.fn(),
-    hasThreeInColumn: jest.fn(),
-    hasThreeDiagonal: jest.fn(),
-}));
+jest.mock('./board');
 
 describe('game', () => {
     describe('getNextPlayer', () => {

@@ -22,13 +22,13 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "react-scripts test --coverage --watchAll=false",
         "eject": "react-scripts eject",
         "prettierAll": "node_modules/.bin/prettier --write \"+(src)/**/*.{js,jsx,ts,tsx,json,scss,md}\"",
         "pretty-quick-staged": "pretty-quick --staged",
         "tsc": "node_modules/.bin/tsc",
         "lint": "node_modules/.bin/eslint ./ --ext .js,.jsx,.ts,.tsx",
-        "check": "npm-run-all pretty-quick-staged tsc lint"
+        "check": "npm-run-all pretty-quick-staged tsc lint test"
     },
     "eslintConfig": {
         "extends": [
