@@ -16,7 +16,15 @@ describe('game', () => {
     });
 
     describe('getNextBoard', () => {
-        // TODO
+        it('should not modify board if game is finished', () => {
+            // TODO
+        });
+        it('should return current board if cell is marked', () => {
+            // TODO
+        });
+        it('should set player for clicked cell if cell does exist and not marked', () => {
+            // TODO
+        });
     });
 
     describe('isGameFinished', () => {
