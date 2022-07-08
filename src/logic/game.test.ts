@@ -1,5 +1,5 @@
-import {getNextPlayer, isGameFinished} from './game';
-import {Player} from '../components/types';
+import {getNextBoard, getNextPlayer, isGameFinished} from './game';
+import {Board, Player} from '../components/types';
 import {hasThreeDiagonal, hasThreeInColumn, hasThreeInRow} from './board';
 import {getInitialBoard} from '../components/Game/initialBoard';
 
@@ -16,7 +16,28 @@ describe('game', () => {
     });
 
     describe('getNextBoard', () => {
-        // TODO
+        const getTestBoard = (): Board => {
+            const board = getInitialBoard();
+            board[1][1].filledWith = Player.heart;
+            return board;
+        };
+
+        it('should not change board if game is finished', () => {
+            const clickedCell = {row: 1, column: 1, filledWith: Player.none};
+            const nextBoard = getNextBoard(getTestBoard(), clickedCell, true, Player.cross);
+            expect(nextBoard).toEqual(getTestBoard());
+        });
+        it('should not change board if clicked cell is already marked', () => {
+            const clickedCell = {row: 1, column: 1, filledWith: Player.heart};
+            const nextBoard = getNextBoard(getTestBoard(), clickedCell, false, Player.cross);
+            expect(nextBoard).toEqual(getTestBoard());
+        });
+        it('should return board with changed cell marker', () => {
+            const clickedCell = {row: 0, column: 0, filledWith: Player.none};
+            const nextBoard = getNextBoard(getTestBoard(), clickedCell, false, Player.heart);
+            expect(nextBoard).not.toEqual(getTestBoard());
+            expect(nextBoard[1][1].filledWith).toEqual(Player.heart);
+        });
     });
 
     describe('isGameFinished', () => {

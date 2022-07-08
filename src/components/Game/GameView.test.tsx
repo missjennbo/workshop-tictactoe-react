@@ -19,7 +19,10 @@ describe('GameView', () => {
         expect(within(firstCell).getByAltText('heart')).not.toBeNull();
     });
     it('should disable reset button if board is empty', () => {
-        // TODO
+        const component = render(<GameView />);
+        const resetButton = component.queryByRole('button', {name: 'Reset'});
+        expect(resetButton).not.toBeNull();
+        expect(resetButton).toBeDisabled();
     });
     it('should reset board on reset button click', () => {
         const component = render(<GameView />);
