@@ -1,28 +1,32 @@
-import React, {useState} from 'react';
+import React from 'react';
 import BoardView from '../Board/BoardView';
-import {getInitialBoard} from './initialBoard';
-import {getNextBoard, getNextPlayer, isGameFinished} from '../../logic/game';
 import styles from './GameView.module.scss';
 import {Cell, Player} from '../types';
+import {useDispatch, useSelector} from 'react-redux';
+import {GameAction} from '../../reducer/gameReducer';
+import {CELL_CLICKED, RESET_GAME} from '../../actions/gameActions';
+import {RootState} from '../../store';
 
 const GameView = (): JSX.Element => {
-    const [board, setBoard] = useState(getInitialBoard());
-    const [gameFinished, setGameFinished] = useState(false);
-    const [currentPlayer, setCurrentPlayer] = useState(Player.heart);
+    const board = useSelector((state: RootState) => state.gameReducer.board);
+    const gameFinished = useSelector((state: RootState) => state.gameReducer.gameFinished);
+    const currentPlayer = useSelector((state: RootState) => state.gameReducer.currentPlayer);
+    const dispatch = useDispatch();
 
-    const onCellClick = (cell: Cell): void => {
-        if (gameFinished) {
-            return;
-        }
-        setBoard(getNextBoard(board, cell, gameFinished, currentPlayer));
-        setGameFinished(isGameFinished(board, currentPlayer));
-        setCurrentPlayer(getNextPlayer(currentPlayer));
-    };
+    const onCellClick = (clickedCell: Cell): GameAction => dispatch({type: CELL_CLICKED, clickedCell: clickedCell});
+    const resetGame = (): GameAction => dispatch({type: RESET_GAME});
+
+    const currentPlayerDisplayName = currentPlayer === Player.heart ? 'Herz' : 'Kreuz';
 
     return (
         <div className={styles['container']}>
             <h1>Tic Tac Toe</h1>
             <BoardView boardData={board} onClick={onCellClick} />
+            {gameFinished && <p>{currentPlayerDisplayName} hat gewonnen!</p>}
+            {!gameFinished && <p>{currentPlayerDisplayName} ist dran!</p>}
+            <button className={styles.resetBtn} onClick={resetGame}>
+                Reset
+            </button>
         </div>
     );
 };

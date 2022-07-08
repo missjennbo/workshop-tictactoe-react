@@ -1,10 +1,12 @@
 import React from 'react';
 import GameView from './components/Game/GameView';
+import {Provider} from 'react-redux';
+import {store} from './store';
 
 const App = (): JSX.Element => (
-    <div>
+    <Provider store={store}>
         <GameView />
-    </div>
+    </Provider>
 );
 
 export default App;
