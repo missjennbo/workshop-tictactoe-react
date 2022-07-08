@@ -21,7 +21,7 @@ const GameView = (): JSX.Element => {
 
     return (
         <div className={styles['container']}>
-            <p>Tic Tac Toe</p>
+            <h1>Tic Tac Toe</h1>
             <BoardView boardData={board} onClick={onCellClick} />
         </div>
     );
