@@ -31,11 +31,11 @@ const GameView = (): JSX.Element => {
 
     return (
         <div className={styles['container']}>
-            <p>Tic Tac Toe</p>
+            <h1>Tic Tac Toe</h1>
             <BoardView boardData={board} onClick={onCellClick} />
             {gameFinished && <p>{currentPlayerDisplayName} hat gewonnen!</p>}
             {!gameFinished && <p>{currentPlayerDisplayName} ist dran!</p>}
-            <button className={styles['reset-button']} onClick={resetGame}>
+            <button className={styles.resetBtn} onClick={resetGame}>
                 Reset
             </button>
         </div>
