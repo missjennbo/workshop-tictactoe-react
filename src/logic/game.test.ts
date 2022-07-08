@@ -1,5 +1,5 @@
 import {getNextBoard, getNextPlayer, isGameFinished} from './game';
-import {Board, Player} from '../components/types';
+import {Player} from '../components/types';
 import {hasThreeDiagonal, hasThreeInColumn, hasThreeInRow} from './board';
 import {getInitialBoard} from '../components/Game/initialBoard';
 
@@ -16,26 +16,18 @@ describe('game', () => {
     });
 
     describe('getNextBoard', () => {
-        const getTestBoard = (): Board => {
-            const board = getInitialBoard();
-            board[1][1].filledWith = Player.heart;
-            return board;
-        };
+        const testCell = {row: 1, column: 1, filledWith: Player.none};
 
-        it('should not change board if game is finished', () => {
-            const clickedCell = {row: 1, column: 1, filledWith: Player.none};
-            const nextBoard = getNextBoard(getTestBoard(), clickedCell, true, Player.cross);
-            expect(nextBoard).toEqual(getTestBoard());
+        it('should not modify board if game is finished', () => {
+            expect(getNextBoard(getInitialBoard(), testCell, true, Player.heart)).toEqual(getInitialBoard());
         });
-        it('should not change board if clicked cell is already marked', () => {
-            const clickedCell = {row: 1, column: 1, filledWith: Player.heart};
-            const nextBoard = getNextBoard(getTestBoard(), clickedCell, false, Player.cross);
-            expect(nextBoard).toEqual(getTestBoard());
+        it('should return current board if cell is marked', () => {
+            const testBoard = getInitialBoard();
+            testBoard[1][1].filledWith = Player.heart;
+            expect(getNextBoard(testBoard, testCell, false, Player.cross)).toEqual(testBoard);
         });
-        it('should return board with changed cell marker', () => {
-            const clickedCell = {row: 0, column: 0, filledWith: Player.none};
-            const nextBoard = getNextBoard(getTestBoard(), clickedCell, false, Player.heart);
-            expect(nextBoard).not.toEqual(getTestBoard());
+        it('should set player for clicked cell if cell does exist and not marked', () => {
+            const nextBoard = getNextBoard(getInitialBoard(), testCell, false, Player.heart);
             expect(nextBoard[1][1].filledWith).toEqual(Player.heart);
         });
     });
